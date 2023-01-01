@@ -2,16 +2,27 @@
 using namespace std;
 int GCD(int a, int b)
 {
-    if (a % b == 0)
+    if (a == 0 || b == 0)
     {
-        return b;
+        return 0;
+    }
+    else if (a == b)
+    {
+        return a;
+    }
+    else if (a > b)
+    {
+        return GCD(a - b, a);
     }
     else
     {
-        return GCD(b, a % b);
+        return GCD(a, b - a);
     }
 }
 int main()
 {
-    cout << GCD(9, 3) << endl;
+    cout << "Enter 2 numbers:" << endl;
+    int a, b;
+    cin >> a >> b;
+    cout << "GCD of " << a << " and " << b << " is " << GCD(a, b) << " .\n";
 }
